@@ -1,0 +1,31 @@
+{
+    "id": "swift-cbpr-mt-mx",
+    "name": "SWIFT CBPR+ MT <-> MX Transformations - SR2025",
+    "version": "2.0.0",
+    "description": "SWIFT MT ↔ ISO 20022 transformations for CBPR+ supporting SR2025 specifications.",
+    "author": "Plasmatic",
+    "license": "Apache 2.0",
+    "engine_version": "^3.1.1",
+    "required_plugins": [
+        "swift_mt_message",
+        "cbpr_mx_message"
+    ],
+    "workflows": {
+        "transform": {
+            "path": "transform",
+            "description": "Unified bidirectional transformation workflows for SWIFT MT ↔ ISO 20022 MX (CBPR+). Supports both outgoing (MT→MX) and incoming (MX→MT) transformations."
+        },
+        "generate": {
+            "path": "generate",
+            "description": "Sample message generation for testing SWIFT MT and ISO 20022 MX messages"
+        },
+        "validate": {
+            "path": "validate",
+            "description": "Message validation workflows for SWIFT MT and ISO 20022 MX compliance checking"
+        }
+    },
+    "scenarios": {
+        "path": "scenarios",
+        "description": "Test scenarios for sample generation and validation. Includes both outgoing (MT→MX) and incoming (MX→MT) scenarios."
+    }
+}
