@@ -4,6 +4,7 @@
     "description": "Post-condition validation for MT205 to pacs.009 CBPR+ transformation ensuring output compliance",
     "priority": 6,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "205"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt205-document-mapper"]},

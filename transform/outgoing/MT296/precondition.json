@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT296 answer to cancellation request message with TR002, TR003, TR004 implementation",
     "priority": 3,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "296"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt296-bah-mapper"]},

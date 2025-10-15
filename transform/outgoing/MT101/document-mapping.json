@@ -5,6 +5,7 @@
     "type": "workflow",
     "version": "1.0.0",
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "101"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt101-bah-mapper"]},
         {"==": [{"var": "metadata.progress.task_id"}, "construct_business_application_header"]},

@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT196 resolution message according to specification",
     "priority": 3,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "196"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt196-bah-mapper"]},

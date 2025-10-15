@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT103 message",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "103"]},
         {"in": [{"var": "metadata.SwiftMT.method"}, ["normal", "stp"]]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt103-bah-mapper"]},

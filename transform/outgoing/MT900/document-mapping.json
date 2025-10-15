@@ -4,6 +4,7 @@
     "description": "Maps MT900 message to ISO 20022 camt.054.001.08 BankToCustomerDebitCreditNotificationV08 document structure",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "900"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt900-precondition"]},

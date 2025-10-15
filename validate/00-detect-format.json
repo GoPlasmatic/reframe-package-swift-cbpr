@@ -1,0 +1,25 @@
+{
+    "id": "detect-format-validate",
+    "name": "Detect Message Format for Validation",
+    "description": "Detects whether message is MT or MX format and sets direction for validation routing",
+    "priority": 0,
+    "condition": true,
+    "tasks": [
+        {
+            "id": "detect_message_format",
+            "name": "Detect Message Format",
+            "description": "Analyzes payload to determine if it's MT (outgoing) or MX (incoming) format",
+            "function": {
+                "name": "detect",
+                "input": {
+                    "source": "payload",
+                    "target": "metadata.detection",
+                    "patterns": [
+                        {"name": "is_xml", "regex": "^\\s*<\\?xml|^\\s*<Document|^\\s*<Envelope"},
+                        {"name": "is_mt", "regex": "\\{1:"}
+                    ]
+                }
+            }
+        }
+    ]
+}

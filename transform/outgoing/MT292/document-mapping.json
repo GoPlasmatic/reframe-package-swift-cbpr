@@ -4,6 +4,7 @@
     "description": "Maps MT292 message to ISO 20022 camt.056.001.08 FIToFIPaymentCancellationRequestV08 document structure",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "292"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt292-precondition"]},

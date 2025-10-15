@@ -3,7 +3,7 @@
     "name": "Validate MX Message",
     "description": "Validates ISO 20022 MX messages using the validate_mx function",
     "priority": 1,
-    "condition": {"==": [{"var": "metadata.message_type"}, "MX"]},
+    "condition": {"!!": [{"var": "metadata.detection.matches.is_xml"}]},
     "tasks": [
         {
             "id": "validate_mx_message",

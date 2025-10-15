@@ -5,7 +5,7 @@
     "priority": 3,
     "condition": { "and": [
         {"==": [{"var": "metadata.ISO20022_MX.message_type"}, "admi.024"]},
-        {"==": [{"var": "metadata.transformation_direction"}, "mx-to-mt"]},
+        {"==": [{"var": "metadata.direction"}, "incoming"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "admi024-variant-detection"]},
         {"==": [{"var": "metadata.progress.task_id"}, "set_target_message"]},
         {"==": [{"var": "metadata.progress.status_code"}, 200]}

@@ -4,6 +4,7 @@
     "description": "Validates the transformed pacs.002 message for CBPR+ compliance after MT205 REJT transformation",
     "priority": 6,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "205"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "reject"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt205rejt-document-mapper"]},

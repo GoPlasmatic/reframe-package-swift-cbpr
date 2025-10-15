@@ -4,6 +4,7 @@
     "description": "Maps MT205 REJT message to ISO 20022 pacs.002.001.10 PaymentStatusReportV10 document structure according to CBPR+ MT202-REJT translation specification",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "205"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "reject"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt205rejt-precondition"]},

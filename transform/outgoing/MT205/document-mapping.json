@@ -4,6 +4,7 @@
     "description": "Maps MT205 message to ISO 20022 pacs.009.001.08 FinancialInstitutionCreditTransferV08 document structure according to CBPR+ translation specification for Corporate payments",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "205"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt205-precondition"]},

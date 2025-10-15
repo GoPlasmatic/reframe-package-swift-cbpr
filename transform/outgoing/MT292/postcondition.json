@@ -4,6 +4,7 @@
     "description": "Validates the camt.056 output from MT292 transformation for CBPR+ compliance",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "292"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt292-document-mapper"]},

@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT202 REJT message including validation of rejection format",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "202"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "reject"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt202-rejt-bah-mapper"]},

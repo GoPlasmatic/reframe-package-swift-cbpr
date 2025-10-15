@@ -3,7 +3,7 @@
     "name": "Validate MT Message",
     "description": "Validates SWIFT MT messages using the validate_mt function",
     "priority": 1,
-    "condition": {"==": [{"var": "metadata.message_type"}, "MT"]},
+    "condition": {"!!": [{"var": "metadata.detection.matches.is_mt"}]},
     "tasks": [
         {
             "id": "validate_mt_message",

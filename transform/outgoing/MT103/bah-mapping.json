@@ -4,6 +4,7 @@
     "description": "Maps MT103 message to ISO 20022 Business Application Header (AppHdr) using head.001.001.02 schema",
     "priority": 3,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "103"]},
         {"in": [{"var": "metadata.SwiftMT.method"}, ["normal", "stp"]]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt103-method-detector"]},

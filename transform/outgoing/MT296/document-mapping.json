@@ -4,6 +4,7 @@
     "description": "Maps MT296 message to ISO 20022 camt.029.001.09 ResolutionOfInvestigationV09 document structure with improved structural mapping and TR003, TR004 implementation",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "296"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt296-precondition"]},

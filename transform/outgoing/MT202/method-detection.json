@@ -4,6 +4,7 @@
     "description": "Detects MT202 message variants (normal, reject, return, cover) by checking Field 72 and validation flag",
     "priority": 2,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "202"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "parser"]},
         {"==": [{"var": "metadata.progress.task_id"}, "parse_mt_message"]},

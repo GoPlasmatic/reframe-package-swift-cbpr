@@ -4,6 +4,7 @@
     "description": "Validates the transformed camt.054 message for CBPR+ compliance after MT900 transformation",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "900"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt900-document-mapper"]},

@@ -1,0 +1,53 @@
+{
+    "id": "detect-format",
+    "name": "Detect Message Format",
+    "description": "Detects whether message is MT or MX format and sets transformation direction",
+    "priority": 0,
+    "condition": true,
+    "tasks": [
+        {
+            "id": "detect_message_format",
+            "name": "Detect Message Format",
+            "description": "Analyzes payload to determine if it's MT (outgoing) or MX (incoming) format",
+            "function": {
+                "name": "detect",
+                "input": {
+                    "source": "payload",
+                    "target": "metadata.detection",
+                    "patterns": [
+                        {"name": "is_xml", "regex": "^\\s*<\\?xml|^\\s*<Document|^\\s*<Envelope"},
+                        {"name": "is_mt", "regex": "\\{1:"}
+                    ]
+                }
+            }
+        },
+        {
+            "id": "set_direction",
+            "name": "Set Direction Based on Detection",
+            "description": "Maps detection result to direction metadata",
+            "function": {
+                "name": "map",
+                "input": {
+                    "mappings": [
+                        {
+                            "path": "metadata.direction",
+                            "logic": {
+                                "if": [
+                                    {"var": "metadata.detection.matches.is_xml"},
+                                    "incoming",
+                                    {
+                                        "if": [
+                                            {"var": "metadata.detection.matches.is_mt"},
+                                            "outgoing",
+                                            "unknown"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

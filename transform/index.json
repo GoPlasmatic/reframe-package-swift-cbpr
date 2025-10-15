@@ -1,7 +1,10 @@
 {
     "description": "Unified bidirectional transformation workflows for SWIFT MT \u2194 ISO 20022 MX (CBPR+)",
-    "version": "2.0",
     "workflows": [
+        {
+            "path": "00-detect-format.json",
+            "description": "Detects message format (MT or MX) and sets transformation direction"
+        },
         {
             "path": "outgoing/parse-mt.json",
             "description": "Common MT message parser for all message types (Outgoing: MT\u2192MX)"

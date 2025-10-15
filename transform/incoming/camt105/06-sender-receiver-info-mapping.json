@@ -5,7 +5,7 @@
     "priority": 7,
     "condition": { "and": [
         {"==": [{"var": "metadata.ISO20022_MX.message_type"}, "camt.105"]},
-        {"==": [{"var": "metadata.transformation_direction"}, "mx-to-mt"]},
+        {"==": [{"var": "metadata.direction"}, "incoming"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "camt105-charges-breakdown-mapping"]},
         {"==": [{"var": "metadata.progress.task_id"}, "map_field_71B"]},
         {"==": [{"var": "metadata.progress.status_code"}, 200]}

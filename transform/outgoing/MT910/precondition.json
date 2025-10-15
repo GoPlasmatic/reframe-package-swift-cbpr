@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT910 confirmation of credit message",
     "priority": 3,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "910"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt910-bah-mapper"]},

@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT202 RETN message including validation of return format",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "202"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "return"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt202-retn-bah-mapper"]},

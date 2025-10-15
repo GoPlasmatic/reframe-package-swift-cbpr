@@ -4,6 +4,7 @@
     "description": "Maps MT103 REJT message to ISO 20022 pacs.002.001.10 FIToFIPaymentStatusReportV10 document structure according to CBPR+ rejection translation specification",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "103"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "reject"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt103-rejt-precondition"]},

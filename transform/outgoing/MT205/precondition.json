@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT205 message with automatic CORE translation (always serial payment)",
     "priority": 4,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "205"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt205-bah-mapper"]},

@@ -5,7 +5,7 @@
     "priority": 6,
     "condition": { "and": [
         {"==": [{"var": "metadata.ISO20022_MX.message_type"}, "pain.001"]},
-        {"==": [{"var": "metadata.transformation_direction"}, "mx-to-mt"]},
+        {"==": [{"var": "metadata.direction"}, "incoming"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "pain001-to-mt101-mandatory-fields"]},
         { "or": [
             {"==": [{"var": "metadata.progress.task_id"}, "map_field_32B"]},

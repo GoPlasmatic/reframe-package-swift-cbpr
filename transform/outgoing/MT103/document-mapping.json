@@ -4,6 +4,7 @@
     "description": "Maps MT103 message to ISO 20022 pacs.008.001.08 FIToFICustomerCreditTransferV08 document structure according to CBPR+ translation specification",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "103"]},
         { "or": [
             {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},

@@ -5,7 +5,7 @@
     "priority": 6,
     "condition": { "and": [
         {"==": [{"var": "metadata.ISO20022_MX.message_type"}, "pacs.003"]},
-        {"==": [{"var": "metadata.transformation_direction"}, "mx-to-mt"]},
+        {"==": [{"var": "metadata.direction"}, "incoming"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "pacs003-mandatory-fields-mapping"]},
         {"==": [{"var": "metadata.progress.status_code"}, 200]}
     ]},

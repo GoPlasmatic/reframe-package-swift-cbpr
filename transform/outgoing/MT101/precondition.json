@@ -4,6 +4,7 @@
     "description": "Validates MT101 message before transformation to pain.001 according to CBPR+ translation rules",
     "priority": 2,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "101"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "parser"]},
         {"==": [{"var": "metadata.progress.task_id"}, "parse_mt_message"]},

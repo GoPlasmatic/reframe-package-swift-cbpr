@@ -4,6 +4,7 @@
     "description": "Precondition checks for MT900 confirmation of debit message",
     "priority": 3,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "900"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt900-bah-mapper"]},

@@ -5,7 +5,7 @@
     "priority": 3,
     "condition": { "and": [
         {"==": [{"var": "metadata.ISO20022_MX.message_type"}, "camt.108"]},
-        {"==": [{"var": "metadata.transformation_direction"}, "mx-to-mt"]},
+        {"==": [{"var": "metadata.direction"}, "incoming"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "camt108-headers-mapping"]},
         {"==": [{"var": "metadata.progress.task_id"}, "map_headers"]},
         {"==": [{"var": "metadata.progress.status_code"}, 200]}

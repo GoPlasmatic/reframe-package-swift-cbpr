@@ -5,7 +5,7 @@
     "priority": 3,
     "condition": { "and": [
         {"==": [{"var": "metadata.ISO20022_MX.message_type"}, "pacs.004"]},
-        {"==": [{"var": "metadata.transformation_direction"}, "mx-to-mt"]},
+        {"==": [{"var": "metadata.direction"}, "incoming"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "pacs004-variant-detection"]},
         {"==": [{"var": "metadata.progress.task_id"}, "validate_variant"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "103"]},

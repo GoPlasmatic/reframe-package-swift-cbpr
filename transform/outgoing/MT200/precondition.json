@@ -4,6 +4,7 @@
     "description": "Validates MT200 messages against CBPR+ requirements for FI Transfer for Own Account before transformation to pacs.009.001.08",
     "priority": 3,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "200"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt200-bah-mapper"]},
         {"==": [{"var": "metadata.progress.task_id"}, "construct_business_application_header"]},

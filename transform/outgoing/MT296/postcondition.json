@@ -4,6 +4,7 @@
     "description": "Post-condition validation for MT296 to camt.029 transformation ensuring output message correctness and compliance",
     "priority": 5,
     "condition": { "and": [
+        {"==": [{"var": "metadata.direction"}, "outgoing"]},
         {"==": [{"var": "metadata.SwiftMT.message_type"}, "296"]},
         {"==": [{"var": "metadata.SwiftMT.method"}, "normal"]},
         {"==": [{"var": "metadata.progress.workflow_id"}, "mt296-document-mapper"]},
