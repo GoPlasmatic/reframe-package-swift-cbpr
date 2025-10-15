@@ -10,8 +10,22 @@ import shutil
 import zipfile
 from pathlib import Path
 
+# Read version from reframe-package.json
+def get_package_version():
+    """Read version from reframe-package.json"""
+    try:
+        package_json_path = Path(__file__).parent / "reframe-package.json"
+        with open(package_json_path, 'r', encoding='utf-8') as f:
+            package_data = json.load(f)
+        version = package_data.get('version', '0.0.0')
+        # Add 'v' prefix if not present
+        return version if version.startswith('v') else f"v{version}"
+    except Exception as e:
+        print(f"Error reading version from reframe-package.json: {e}")
+        return "v0.0.0"
+
 # Configuration
-PACKAGE_VERSION = "v2.0.0"
+PACKAGE_VERSION = get_package_version()
 RELEASE_DIR = "release"
 PACKAGE_NAME = f"reframe-swift-cbpr-{PACKAGE_VERSION}"
 ZIP_NAME = f"{PACKAGE_NAME}.zip"
