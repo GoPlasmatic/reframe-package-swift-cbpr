@@ -41,6 +41,7 @@ INCLUDE_DIRS = [
 # Individual files to include
 INCLUDE_FILES = [
     "reframe-package.json",
+    "api_config.json",
     "README.md",
     "LICENSE"
 ]
