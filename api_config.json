@@ -193,7 +193,7 @@
     {
       "name": "settlement_date",
       "description": "Interbank settlement date",
-      "type": "string",
+      "type": "datetime",
       "storage": "precompute",
       "logic": {
         "or": [

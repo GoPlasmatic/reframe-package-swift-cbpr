@@ -1,7 +1,7 @@
 {
     "id": "swift-cbpr-mt-mx",
     "name": "SWIFT CBPR+ MT <-> MX Transformations - SR2025",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "SWIFT MT ↔ ISO 20022 transformations for CBPR+ supporting SR2025 specifications.",
     "author": "Plasmatic",
     "license": "Apache 2.0",
