@@ -1,0 +1,448 @@
+{
+  "custom_fields": [
+    {
+      "name": "sender_name",
+      "description": "Name of the message sender/ordering party",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.50K.name_and_address[0]"},
+          {"var": "data.SwiftMT.fields.50F.account"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Dbtr.Nm"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.GrpHdr.InitgPty.Nm"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Dbtr.Nm"}
+        ]
+      }
+    },
+    {
+      "name": "receiver_name",
+      "description": "Name of the message receiver/beneficiary",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.59.name_and_address[0]"},
+          {"var": "data.SwiftMT.fields.59A.name_and_address[0]"},
+          {"var": "data.SwiftMT.fields.#[0].59A.name_and_address[0]"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Cdtr.Nm"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Cdtr.Nm"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Cdtr.Nm"}
+        ]
+      }
+    },
+    {
+      "name": "amount",
+      "description": "Transaction amount",
+      "type": "number",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.32A.amount"},
+          {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"}
+        ]
+      }
+    },
+    {
+      "name": "currency",
+      "description": "Transaction currency code (ISO 4217)",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.32A.currency"},
+          {"var": "data.SwiftMT.fields.#[0].32B.currency"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.@Ccy"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.@Ccy"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.@Ccy"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.@Ccy"}
+        ]
+      }
+    },
+    {
+      "name": "message_type",
+      "description": "SWIFT message type (MT103, pacs.008, pain.001, etc.)",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "metadata.SwiftMT.message_type"},
+          {"var": "metadata.ISO20022_MX.message_type"}
+        ]
+      }
+    },
+    {
+      "name": "direction",
+      "description": "Message direction (outgoing: MT→MX, incoming: MX→MT)",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "var": "metadata.direction"
+      }
+    },
+    {
+      "name": "sender_bic",
+      "description": "Sender institution BIC code",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.MxEnvelope.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+          {"var": "data.ISO20022_MX.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+          {"var": "data.SwiftMT.basic_header.sender_bic"}
+        ]
+      }
+    },
+    {
+      "name": "receiver_bic",
+      "description": "Receiver institution BIC code",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.MxEnvelope.AppHdr.To.FIId.FinInstnId.BICFI"},
+          {"var": "data.ISO20022_MX.AppHdr.To.FIId.FinInstnId.BICFI"},
+          {"var": "data.SwiftMT.application_header.receiver_bic"}
+        ]
+      }
+    },
+    {
+      "name": "sender_country",
+      "description": "Sender country code extracted from BIC (ISO 3166-1 alpha-2)",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "substr": [
+          {
+            "or": [
+              {"var": "data.MxEnvelope.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+              {"var": "data.ISO20022_MX.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+              {"var": "data.SwiftMT.basic_header.sender_bic"}
+            ]
+          },
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "name": "receiver_country",
+      "description": "Receiver country code extracted from BIC (ISO 3166-1 alpha-2)",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "substr": [
+          {
+            "or": [
+              {"var": "data.MxEnvelope.AppHdr.To.FIId.FinInstnId.BICFI"},
+              {"var": "data.ISO20022_MX.AppHdr.To.FIId.FinInstnId.BICFI"},
+              {"var": "data.SwiftMT.application_header.receiver_bic"}
+            ]
+          },
+          4,
+          2
+        ]
+      }
+    },
+    {
+      "name": "charge_bearer_type",
+      "description": "Charge bearer code (SHA/OUR/BEN for MT, SHAR/DEBT/CRED for MX)",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.71A.code"},
+          {"var": "data.SwiftMT.fields.#[0].71A.code"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.ChrgBr"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.ChrgBr"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.ChrgBr"}
+        ]
+      }
+    },
+    {
+      "name": "service_level",
+      "description": "Service level agreement code",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.MxEnvelope.AppHdr.BizSvc"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.PmtTpInf.SvcLvl.Cd"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.PmtTpInf.SvcLvl.Cd"},
+          {"var": "data.ISO20022_MX.AppHdr.BizSvc"}
+        ]
+      }
+    },
+    {
+      "name": "payment_purpose",
+      "description": "Payment purpose or category code",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.26T.narrative"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Purp.Cd"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.Purp.Cd"}
+        ]
+      }
+    },
+    {
+      "name": "settlement_date",
+      "description": "Interbank settlement date",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.32A.value_date"},
+          {"var": "data.SwiftMT.fields.30.execution_date"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.IntrBkSttlmDt"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.ReqdExctnDt.Dt"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.GrpHdr.IntrBkSttlmDt"}
+        ]
+      }
+    },
+    {
+      "name": "transaction_reference",
+      "description": "End-to-end transaction reference",
+      "type": "string",
+      "storage": "precompute",
+      "logic": {
+        "or": [
+          {"var": "data.SwiftMT.fields.20.reference"},
+          {"var": "data.SwiftMT.fields.#[0].21.reference"},
+          {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.PmtId.EndToEndId"},
+          {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.PmtId.EndToEndId"},
+          {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.PmtId.EndToEndId"}
+        ]
+      }
+    },
+    {
+      "name": "amount_value_band",
+      "description": "Categorizes transaction amount as High (>100k), Medium (10k-100k), or Low (<10k)",
+      "type": "string",
+      "storage": "runtime",
+      "logic": {
+        "if": [
+          {">": [
+            {
+              "or": [
+                {"var": "data.SwiftMT.fields.32A.amount"},
+                {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+                {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+                {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+                {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+                {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"},
+                0
+              ]
+            },
+            100000
+          ]},
+          "High",
+          {
+            "if": [
+              {">": [
+                {
+                  "or": [
+                    {"var": "data.SwiftMT.fields.32A.amount"},
+                    {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+                    {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+                    {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+                    {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+                    {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"},
+                    0
+                  ]
+                },
+                10000
+              ]},
+              "Medium",
+              "Low"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "processing_priority",
+      "description": "Processing priority based on amount and charge bearer (Critical/High/Normal)",
+      "type": "string",
+      "storage": "runtime",
+      "logic": {
+        "if": [
+          {"and": [
+            {">": [
+              {
+                "or": [
+                  {"var": "data.SwiftMT.fields.32A.amount"},
+                  {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+                  {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+                  {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+                  {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+                  {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"},
+                  0
+                ]
+              },
+              500000
+            ]},
+            {"in": [
+              {
+                "or": [
+                  {"var": "data.SwiftMT.fields.71A.code"},
+                  {"var": "data.SwiftMT.fields.#[0].71A.code"},
+                  {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.ChrgBr"},
+                  {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.ChrgBr"},
+                  {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.ChrgBr"},
+                  ""
+                ]
+              },
+              ["OUR", "DEBT"]
+            ]}
+          ]},
+          "Critical",
+          {
+            "if": [
+              {">": [
+                {
+                  "or": [
+                    {"var": "data.SwiftMT.fields.32A.amount"},
+                    {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+                    {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+                    {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+                    {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+                    {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"},
+                    0
+                  ]
+                },
+                100000
+              ]},
+              "High",
+              "Normal"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "risk_category",
+      "description": "Risk assessment based on amount and cross-border status (High/Medium/Low)",
+      "type": "string",
+      "storage": "runtime",
+      "logic": {
+        "if": [
+          {"and": [
+            {">": [
+              {
+                "or": [
+                  {"var": "data.SwiftMT.fields.32A.amount"},
+                  {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+                  {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+                  {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+                  {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+                  {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"},
+                  0
+                ]
+              },
+              250000
+            ]},
+            {"!=": [
+              {"substr": [
+                {
+                  "or": [
+                    {"var": "data.MxEnvelope.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+                    {"var": "data.ISO20022_MX.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+                    {"var": "data.SwiftMT.basic_header.sender_bic"},
+                    ""
+                  ]
+                },
+                4,
+                2
+              ]},
+              {"substr": [
+                {
+                  "or": [
+                    {"var": "data.MxEnvelope.AppHdr.To.FIId.FinInstnId.BICFI"},
+                    {"var": "data.ISO20022_MX.AppHdr.To.FIId.FinInstnId.BICFI"},
+                    {"var": "data.SwiftMT.application_header.receiver_bic"},
+                    ""
+                  ]
+                },
+                4,
+                2
+              ]}
+            ]}
+          ]},
+          "High",
+          {
+            "if": [
+              {"or": [
+                {">": [
+                  {
+                    "or": [
+                      {"var": "data.SwiftMT.fields.32A.amount"},
+                      {"var": "data.SwiftMT.fields.#[0].32B.amount"},
+                      {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.IntrBkSttlmAmt.$value"},
+                      {"var": "data.MxEnvelope.Document.FIToFICstmrCdtTrf.GrpHdr.TtlIntrBkSttlmAmt.$value"},
+                      {"var": "data.MxEnvelope.Document.CstmrCdtTrfInitn.PmtInf.CdtTrfTxInf.Amt.InstdAmt.$value"},
+                      {"var": "data.ISO20022_MX.Document.FIToFICstmrCdtTrf.CdtTrfTxInf.InstdAmt.$value"},
+                      0
+                    ]
+                  },
+                  100000
+                ]},
+                {"!=": [
+                  {"substr": [
+                    {
+                      "or": [
+                        {"var": "data.MxEnvelope.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+                        {"var": "data.ISO20022_MX.AppHdr.Fr.FIId.FinInstnId.BICFI"},
+                        {"var": "data.SwiftMT.basic_header.sender_bic"},
+                        ""
+                      ]
+                    },
+                    4,
+                    2
+                  ]},
+                  {"substr": [
+                    {
+                      "or": [
+                        {"var": "data.MxEnvelope.AppHdr.To.FIId.FinInstnId.BICFI"},
+                        {"var": "data.ISO20022_MX.AppHdr.To.FIId.FinInstnId.BICFI"},
+                        {"var": "data.SwiftMT.application_header.receiver_bic"},
+                        ""
+                      ]
+                    },
+                    4,
+                    2
+                  ]}
+                ]}
+              ]},
+              "Medium",
+              "Low"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "business_hours_indicator",
+      "description": "Indicates if message was processed during business hours (weekday 9am-5pm UTC)",
+      "type": "string",
+      "storage": "runtime",
+      "logic": {
+        "if": [
+          {"and": [
+            {">=": [{"hour": [{"var": "metadata.processed_at"}]}, 9]},
+            {"<": [{"hour": [{"var": "metadata.processed_at"}]}, 17]},
+            {">=": [{"day_of_week": [{"var": "metadata.processed_at"}]}, 1]},
+            {"<=": [{"day_of_week": [{"var": "metadata.processed_at"}]}, 5]}
+          ]},
+          "Yes",
+          "No"
+        ]
+      }
+    }
+  ]
+}
