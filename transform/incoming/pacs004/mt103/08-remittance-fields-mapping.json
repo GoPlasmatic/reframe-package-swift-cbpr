@@ -28,12 +28,22 @@
                                         [
                                             { "if": [
                                                 {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.UltmtDbtr"},
-                                                {"cat": ["/ULTD/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.UltmtDbtr.Nm"}]},
+                                                {
+                                                    "cat": [
+                                                        "/ULTD/",
+                                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.UltmtDbtr.Nm"}
+                                                    ]
+                                                },
                                                 null
                                             ]},
                                             { "if": [
                                                 {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.UltmtCdtr"},
-                                                {"cat": ["/ULTB/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.UltmtCdtr.Nm"}]},
+                                                {
+                                                    "cat": [
+                                                        "/ULTB/",
+                                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.UltmtCdtr.Nm"}
+                                                    ]
+                                                },
                                                 null
                                             ]}
                                         ],
@@ -56,33 +66,37 @@
                     "mappings": [
                         {
                             "path": "data.SwiftMT.fields.#72",
-                            "logic": { "information": 
-                                {"merge": [
-                                    "/RETN/",
-                                    { "if": [
-                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlInstrId"},
-                                        {"cat": ["/MREF/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlInstrId"}]},
-                                        null
-                                    ]},
-                                    { "if": [
-                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlEndToEndId"},
-                                        {"cat": ["/TREF/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlEndToEndId"}]},
-                                        null
-                                    ]},
-                                    { "if": [
-                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.Rsn.Cd"},
-                                        {"cat": ["/REAS/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.Rsn.Cd"}]},
-                                        null
-                                    ]},
-                                    { "if": [
-                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.AddtlInf"},
-                                        {"map": [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.AddtlInf"},
-                                            {"cat": ["/INFO/", {"var": ""}]}
+                            "logic": {
+                                "information": {
+                                    "merge": [
+                                        "/RETN/",
+                                        { "if": [
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlInstrId"},
+                                            {"cat": ["/MREF/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlInstrId"}]},
+                                            null
                                         ]},
-                                        null
-                                    ]}
-                                ]}
+                                        { "if": [
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlEndToEndId"},
+                                            {"cat": ["/TREF/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlEndToEndId"}]},
+                                            null
+                                        ]},
+                                        { "if": [
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.Rsn.Cd"},
+                                            {"cat": ["/REAS/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.Rsn.Cd"}]},
+                                            null
+                                        ]},
+                                        { "if": [
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.AddtlInf"},
+                                            {
+                                                "map": [
+                                                    {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrRsnInf.AddtlInf"},
+                                                    {"cat": ["/INFO/", {"var": ""}]}
+                                                ]
+                                            },
+                                            null
+                                        ]}
+                                    ]
+                                }
                             }
                         }
                     ]
@@ -96,28 +110,40 @@
             "function": {
                 "name": "map",
                 "input": {
-                    "mappings": [{
-                        "path": "data.SwiftMT.fields.77B",
-                        "logic": {
-                            "narrative": {
-                                "filter": [
-                                    [
-                                        { "if": [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.CtryOfRes"},
-                                            {"cat": ["/ORDERRES/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.CtryOfRes"}]},
-                                            null
-                                        ]},
-                                        { "if": [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.CtryOfRes"},
-                                            {"cat": ["/BENEFRES/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.CtryOfRes"}]},
-                                            null
-                                        ]}
-                                    ],
-                                    {"var": ""}
-                                ]
+                    "mappings": [
+                        {
+                            "path": "data.SwiftMT.fields.77B",
+                            "logic": {
+                                "narrative": {
+                                    "filter": [
+                                        [
+                                            { "if": [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.CtryOfRes"},
+                                                {
+                                                    "cat": [
+                                                        "/ORDERRES/",
+                                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.CtryOfRes"}
+                                                    ]
+                                                },
+                                                null
+                                            ]},
+                                            { "if": [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.CtryOfRes"},
+                                                {
+                                                    "cat": [
+                                                        "/BENEFRES/",
+                                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.CtryOfRes"}
+                                                    ]
+                                                },
+                                                null
+                                            ]}
+                                        ],
+                                        {"var": ""}
+                                    ]
+                                }
                             }
                         }
-                    }]
+                    ]
                 }
             }
         }

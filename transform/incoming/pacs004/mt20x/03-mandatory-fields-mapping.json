@@ -22,7 +22,11 @@
                     "mappings": [
                         {
                             "path": "data.SwiftMT.fields.#20",
-                            "logic": {"reference": {"substr": [{"var": "data.ISO20022_MX.Document.PmtRtr.GrpHdr.MsgId"}, 0, 16]}}
+                            "logic": {
+                                "reference": {
+                                    "substr": [{"var": "data.ISO20022_MX.Document.PmtRtr.GrpHdr.MsgId"}, 0, 16]
+                                }
+                            }
                         }
                     ]
                 }

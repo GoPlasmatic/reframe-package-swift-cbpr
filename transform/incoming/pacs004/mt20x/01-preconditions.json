@@ -22,7 +22,12 @@
                     "rules": [
                         {
                             "path": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdIntrBkSttlmAmt.@Ccy",
-                            "logic": {"in": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdIntrBkSttlmAmt.@Ccy"}, ["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "CNY", "HKD", "SGD"]]},
+                            "logic": {
+                                "in": [
+                                    {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdIntrBkSttlmAmt.@Ccy"},
+                                    ["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "CNY", "HKD", "SGD"]
+                                ]
+                            },
                             "message": "Unsupported currency for MT202/205 RETN transformation"
                         }
                     ]

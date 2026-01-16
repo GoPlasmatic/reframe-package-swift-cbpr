@@ -48,8 +48,19 @@
                                 "service_type_identifier": { "if": [
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"},
                                     { "if": [
-                                        {"in": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"}, ["G001", "G002", "G003", "G004"]]},
-                                        {"substr": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"}, 2, 3]},
+                                        {
+                                            "in": [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"},
+                                                ["G001", "G002", "G003", "G004"]
+                                            ]
+                                        },
+                                        {
+                                            "substr": [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"},
+                                                2,
+                                                3
+                                            ]
+                                        },
                                         null
                                     ]},
                                     null

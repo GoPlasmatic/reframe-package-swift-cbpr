@@ -22,7 +22,14 @@
                     "rules": [
                         {
                             "path": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdIntrBkSttlmAmt.Ccy",
-                            "logic": {"!": {"in": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdIntrBkSttlmAmt.Ccy"}, ["XAU", "XAG", "XPD", "XPT"]]}},
+                            "logic": {
+                                "!": {
+                                    "in": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdIntrBkSttlmAmt.Ccy"},
+                                        ["XAU", "XAG", "XPD", "XPT"]
+                                    ]
+                                }
+                            },
                             "message": "T20054: Commodities currencies not allowed in Field 32A"
                         }
                     ]

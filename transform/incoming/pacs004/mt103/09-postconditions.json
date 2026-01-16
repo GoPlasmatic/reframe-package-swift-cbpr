@@ -32,7 +32,7 @@
                         },
                         {
                             "path": "data.SwiftMT.fields.72",
-                            "logic": {"and": [
+                            "logic": { "and": [
                                 {"exists": ["data", "SwiftMT", "fields", "72"]},
                                 {"starts_with": [{"var": "data.SwiftMT.fields.72.information.0"}, "/RETN/"]}
                             ]},
@@ -46,13 +46,7 @@
             "id": "publish_message",
             "name": "Publish MT103 RETN",
             "description": "Generate and publish the final MT103 RETN message",
-            "function": {
-                "name": "publish_mt",
-                "input": {
-                    "source": "SwiftMT",
-                    "target": "result"
-                }
-            }
+            "function": {"name": "publish_mt", "input": {"source": "SwiftMT", "target": "result"}}
         }
     ]
 }

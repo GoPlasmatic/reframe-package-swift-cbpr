@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Reframe v3.0 SWIFT CBPR+ Transformation Package** for bidirectional SWIFT MT ↔ ISO 20022 MX message transformations. It's SR2025-compliant and processes messages through the dataflow-rs engine using JSON-based workflow definitions.
+This is a **Reframe v3.1+ SWIFT CBPR+ Transformation Package** for bidirectional SWIFT MT ↔ ISO 20022 MX message transformations. It's SR2025-compliant and processes messages through the dataflow-rs engine using JSON-based workflow definitions.
 
 **Key Concepts:**
 - **Workflows**: JSON files containing JSONLogic-based transformation rules
@@ -126,8 +126,9 @@ Each scenario file contains sample input messages and expected outputs for speci
 ### Validation
 
 The package includes validation workflows in `validate/`:
-- `validate-mt.json` → Validate SWIFT MT messages
-- `validate-mx.json` → Validate ISO 20022 MX messages
+- `00-detect-format.json` → Detect message format (MT or MX) and set direction
+- `01-validate-mt.json` → Validate SWIFT MT messages
+- `01-validate-mx.json` → Validate ISO 20022 MX messages
 
 ## JSONLogic Operations
 

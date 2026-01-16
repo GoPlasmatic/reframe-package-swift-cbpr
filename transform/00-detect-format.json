@@ -31,19 +31,15 @@
                     "mappings": [
                         {
                             "path": "metadata.direction",
-                            "logic": {
-                                "if": [
-                                    {"var": "metadata.detection.matches.is_xml"},
-                                    "incoming",
-                                    {
-                                        "if": [
-                                            {"var": "metadata.detection.matches.is_mt"},
-                                            "outgoing",
-                                            "unknown"
-                                        ]
-                                    }
-                                ]
-                            }
+                            "logic": { "if": [
+                                {"var": "metadata.detection.matches.is_xml"},
+                                "incoming",
+                                { "if": [
+                                    {"var": "metadata.detection.matches.is_mt"},
+                                    "outgoing",
+                                    "unknown"
+                                ]}
+                            ]}
                         }
                     ]
                 }

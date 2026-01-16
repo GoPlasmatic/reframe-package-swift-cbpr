@@ -45,14 +45,25 @@
                             "path": "data.SwiftMT.user_header",
                             "logic": {
                                 "unique_end_to_end_reference": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlUETR"},
-                                "service_type_identifier": {"if": [
-                                    {"and": [
+                                "service_type_identifier": { "if": [
+                                    { "and": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef"},
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf"},
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl"},
-                                        {"starts_with": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"}, "G"]}
+                                        {
+                                            "starts_with": [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"},
+                                                "G"
+                                            ]
+                                        }
                                     ]},
-                                    {"substr": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"}, 1, 3]},
+                                    {
+                                        "substr": [
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.OrgnlTxRef.PmtTpInf.SvcLvl.Cd"},
+                                            1,
+                                            3
+                                        ]
+                                    },
                                     null
                                 ]}
                             }

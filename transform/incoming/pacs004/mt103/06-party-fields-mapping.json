@@ -27,9 +27,7 @@
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt"},
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.BICFI"}
                                 ]},
-                                {
-                                    "identifier_code": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.BICFI"}
-                                },
+                                {"identifier_code": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.BICFI"}},
                                 null
                             ]}
                         },
@@ -42,8 +40,15 @@
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}
                                 ]},
                                 {
-                                    "party_identifier": {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}]},
-                                    "name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.Nm"}]
+                                    "party_identifier": {
+                                        "cat": [
+                                            "/",
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}
+                                        ]
+                                    },
+                                    "name_and_address": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.Nm"}
+                                    ]
                                 },
                                 { "if": [
                                     { "and": [
@@ -51,7 +56,12 @@
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Id.OrgId.LEI"}
                                     ]},
                                     {
-                                        "party_identifier": {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Id.OrgId.LEI"}]},
+                                        "party_identifier": {
+                                            "cat": [
+                                                "/",
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Id.OrgId.LEI"}
+                                            ]
+                                        },
                                         "name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Nm"}]
                                     },
                                     null
@@ -66,9 +76,7 @@
                                     {"!": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Id.OrgId.LEI"}},
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Nm"}
                                 ]},
-                                {
-                                    "name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Nm"}]
-                                },
+                                {"name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Pty.Nm"}]},
                                 null
                             ]}
                         }
@@ -93,7 +101,9 @@
                                 ]},
                                 {
                                     "identifier_code": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.BICFI"},
-                                    "name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"}]
+                                    "name_and_address": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"}
+                                    ]
                                 },
                                 null
                             ]}
@@ -107,17 +117,22 @@
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}
                                 ]},
                                 {
-                                    "account": {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}]},
-                                    "name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"}]
+                                    "account": {
+                                        "cat": [
+                                            "/",
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}
+                                        ]
+                                    },
+                                    "name_and_address": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"}
+                                    ]
                                 },
                                 { "if": [
                                     { "and": [
                                         {"!": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt"}},
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.Nm"}
                                     ]},
-                                    {
-                                        "name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.Nm"}]
-                                    },
+                                    {"name_and_address": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Pty.Nm"}]},
                                     null
                                 ]}
                             ]}

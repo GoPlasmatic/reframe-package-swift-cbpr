@@ -20,6 +20,30 @@
                     ]
                 }
             }
+        },
+        {
+            "id": "set_direction",
+            "name": "Set Direction Based on Detection",
+            "description": "Maps detection result to direction metadata",
+            "function": {
+                "name": "map",
+                "input": {
+                    "mappings": [
+                        {
+                            "path": "metadata.direction",
+                            "logic": { "if": [
+                                {"var": "metadata.detection.matches.is_xml"},
+                                "incoming",
+                                { "if": [
+                                    {"var": "metadata.detection.matches.is_mt"},
+                                    "outgoing",
+                                    "unknown"
+                                ]}
+                            ]}
+                        }
+                    ]
+                }
+            }
         }
     ]
 }

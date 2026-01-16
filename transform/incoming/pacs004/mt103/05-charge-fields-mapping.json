@@ -18,14 +18,7 @@
             "description": "TR008: Map charge bearer",
             "function": {
                 "name": "map",
-                "input": {
-                    "mappings": [
-                        {
-                            "path": "data.SwiftMT.fields.71A",
-                            "logic": { "code": "OUR"}
-                        }
-                    ]
-                }
+                "input": {"mappings": [{"path": "data.SwiftMT.fields.71A", "logic": {"code": "OUR"}}]}
             }
         },
         {
@@ -40,48 +33,42 @@
                             "path": "temp_data.charges_array",
                             "logic": { "if": [
                                 {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgBr"},
-                                {"map": [
-                                    {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgsInf"},
-                                    {"cat": [
-                                        {"var": "Amt.Ccy"},
-                                        {"replace": [
-                                            {"cat": [{"var": "Amt.value"}]},
-                                            ".",
-                                            ","
-                                        ]}
-                                    ]}
-                                ]},
+                                {
+                                    "map": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgsInf"},
+                                        {"cat": [{"var": "Amt.Ccy"}, {"replace": [{"cat": [{"var": "Amt.value"}]}, ".", ","]}]}
+                                    ]
+                                },
                                 []
                             ]}
                         },
                         {
                             "path": "data.SwiftMT.fields.71F",
                             "logic": { "if": [
-                                {"or": [
+                                { "or": [
                                     {"!": {"exists": ["data", "ISO20022_MX", "document", "TxInf", "ChrgBr"]}},
                                     {"in": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgBr"}, ["SHAR", "CRED"]]}
                                 ]},
-                                {"map": [
-                                    {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgsInf"},
-                                    {
-                                        "currency": {"var": "Amt.@Ccy"},
-                                        "amount": {"+": [{"var": "Amt.$value"}]}
-                                    }
-                                ]},
+                                {
+                                    "map": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgsInf"},
+                                        {"currency": {"var": "Amt.@Ccy"}, "amount": {"+": [{"var": "Amt.$value"}]}}
+                                    ]
+                                },
                                 null
                             ]}
                         },
                         {
                             "path": "data.SwiftMT.fields.71G",
                             "logic": { "if": [
-                                {"and" : [
+                                { "and": [
                                     {"==": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgBr"}, "DEBT"]},
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgsInf"}
                                 ]},
                                 {
                                     "currency": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.ChrgsInf.0.Amt.@Ccy"},
-                                    "amount": {"reduce": [
-                                        {"var": "temp_data.charges_array"}, 
+                                    "amount": { "reduce": [
+                                        {"var": "temp_data.charges_array"},
                                         {"+": [{"var": "accumulator"}, {"var": "current.Amt.$value"}]}
                                     ]}
                                 },

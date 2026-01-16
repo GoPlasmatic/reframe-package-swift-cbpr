@@ -27,18 +27,22 @@
                                 [
                                     { "if": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.SttlmTmIndctn.DbtDtTm"},
-                                        {"cat": [
-                                            "/SNDTIME/",
-                                            {"time_offset": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.SttlmTmIndctn.DbtDtTm"}]}
-                                        ]},
+                                        {
+                                            "cat": [
+                                                "/SNDTIME/",
+                                                {"time_offset": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.SttlmTmIndctn.DbtDtTm"}]}
+                                            ]
+                                        },
                                         null
                                     ]},
                                     { "if": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.SttlmTmIndctn.CdtDtTm"},
-                                        {"cat": [
-                                            "/RNCTIME/",
-                                            {"time_offset": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.SttlmTmIndctn.CdtDtTm"}]}
-                                        ]},
+                                        {
+                                            "cat": [
+                                                "/RNCTIME/",
+                                                {"time_offset": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.SttlmTmIndctn.CdtDtTm"}]}
+                                            ]
+                                        },
                                         null
                                     ]}
                                 ],
@@ -61,14 +65,18 @@
                             "path": "data.SwiftMT.fields.33B",
                             "logic": { "if": [
                                 {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdInstdAmt"},
-                                {"cat": [
-                                    {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdInstdAmt.Ccy"},
-                                    {"replace": [
-                                        {"cat": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdInstdAmt.value"}]},
-                                        ".",
-                                        ","
-                                    ]}
-                                ]},
+                                {
+                                    "cat": [
+                                        {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdInstdAmt.Ccy"},
+                                        {
+                                            "replace": [
+                                                {"cat": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrdInstdAmt.value"}]},
+                                                ".",
+                                                ","
+                                            ]
+                                        }
+                                    ]
+                                },
                                 null
                             ]}
                         }
@@ -88,11 +96,7 @@
                             "path": "data.SwiftMT.fields.#36",
                             "logic": { "if": [
                                 {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.XchgRate"},
-                                {"replace": [
-                                    {"cat": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.XchgRate"}]},
-                                    ".",
-                                    ","
-                                ]},
+                                {"replace": [{"cat": [{"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.XchgRate"}]}, ".", ","]},
                                 null
                             ]}
                         }

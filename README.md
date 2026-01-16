@@ -211,8 +211,9 @@ reframe-package-swift-cbpr/
 │
 ├── validate/                  # Validation workflows
 │   ├── index.json
-│   ├── validate-mt.json
-│   └── validate-mx.json
+│   ├── 00-detect-format.json
+│   ├── 01-validate-mt.json
+│   └── 01-validate-mx.json
 │
 └── scenarios/                 # Test scenarios
     ├── index.json
@@ -294,9 +295,9 @@ The `reframe-package.json` file defines:
 {
   "id": "swift-cbpr-mt-mx",
   "name": "SWIFT CBPR+ MT <-> MX Transformations - SR2025",
-  "version": "2.0.0",
+  "version": "2.1.2",
   "description": "Official SWIFT CBPR+ transformations",
-  "engine_version": "^3.1.1",
+  "engine_version": "^3.1.4",
   "required_plugins": ["swift_mt_message", "cbpr_mx_message"],
   "workflows": {
     "transform": { "path": "transform" },

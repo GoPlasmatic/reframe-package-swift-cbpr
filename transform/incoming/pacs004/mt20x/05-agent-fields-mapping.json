@@ -40,7 +40,7 @@
                                 { "and": [
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt"},
                                     {"!": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.BICFI"}},
-                                    {"or": [
+                                    { "or": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"},
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.Nm"}
                                     ]}
@@ -48,18 +48,25 @@
                                 {
                                     "party_identifier": { "if": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"},
-                                        {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}]},
+                                        {
+                                            "cat": [
+                                                "/",
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}
+                                            ]
+                                        },
                                         null
                                     ]},
-                                    "name_and_address": {"filter": [
-                                        [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.Nm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.PstlAdr.StrtNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.PstlAdr.TwnNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.PstlAdr.Ctry"}
-                                        ],
-                                        {"!=": [{"var": ""}, null]}
-                                    ]}
+                                    "name_and_address": {
+                                        "filter": [
+                                            [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.Nm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.PstlAdr.StrtNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.PstlAdr.TwnNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Dbtr.Agt.FinInstnId.PstlAdr.Ctry"}
+                                            ],
+                                            {"!=": [{"var": ""}, null]}
+                                        ]
+                                    }
                                 },
                                 null
                             ]}
@@ -93,7 +100,7 @@
                                 { "and": [
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1"},
                                     {"!": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.BICFI"}},
-                                    {"or": [
+                                    { "or": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.ClrSysMmbId.MmbId"},
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.Nm"}
                                     ]}
@@ -101,18 +108,25 @@
                                 {
                                     "party_identifier": { "if": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.ClrSysMmbId.MmbId"},
-                                        {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.ClrSysMmbId.MmbId"}]},
+                                        {
+                                            "cat": [
+                                                "/",
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.ClrSysMmbId.MmbId"}
+                                            ]
+                                        },
                                         null
                                     ]},
-                                    "name_and_address": {"filter": [
-                                        [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.Nm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.PstlAdr.StrtNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.PstlAdr.TwnNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.PstlAdr.Ctry"}
-                                        ],
-                                        {"!=": [{"var": ""}, null]}
-                                    ]}
+                                    "name_and_address": {
+                                        "filter": [
+                                            [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.Nm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.PstlAdr.StrtNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.PstlAdr.TwnNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.IntrmyAgt1.FinInstnId.PstlAdr.Ctry"}
+                                            ],
+                                            {"!=": [{"var": ""}, null]}
+                                        ]
+                                    }
                                 },
                                 null
                             ]}
@@ -150,7 +164,12 @@
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"}
                                 ]},
                                 {
-                                    "party_identifier": {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"}]},
+                                    "party_identifier": {
+                                        "cat": [
+                                            "/",
+                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"}
+                                        ]
+                                    },
                                     "location": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.ClrSysId.Cd"}
                                 },
                                 null
@@ -162,7 +181,7 @@
                                 { "and": [
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt"},
                                     {"!": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.BICFI"}},
-                                    {"or": [
+                                    { "or": [
                                         { "and": [
                                             {"!=": [{"var": "metadata.SwiftMT.message_type"}, "202"]},
                                             {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"}
@@ -173,18 +192,25 @@
                                 {
                                     "party_identifier": { "if": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"},
-                                        {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"}]},
+                                        {
+                                            "cat": [
+                                                "/",
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.ClrSysMmbId.MmbId"}
+                                            ]
+                                        },
                                         null
                                     ]},
-                                    "name_and_address": {"filter": [
-                                        [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.Nm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.PstlAdr.StrtNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.PstlAdr.TwnNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.PstlAdr.Ctry"}
-                                        ],
-                                        {"!=": [{"var": ""}, null]}
-                                    ]}
+                                    "name_and_address": {
+                                        "filter": [
+                                            [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.Nm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.PstlAdr.StrtNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.PstlAdr.TwnNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.CdtrAgt.FinInstnId.PstlAdr.Ctry"}
+                                            ],
+                                            {"!=": [{"var": ""}, null]}
+                                        ]
+                                    }
                                 },
                                 null
                             ]}
@@ -218,7 +244,7 @@
                                 { "and": [
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt"},
                                     {"!": {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.BICFI"}},
-                                    {"or": [
+                                    { "or": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"},
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"}
                                     ]}
@@ -226,18 +252,25 @@
                                 {
                                     "party_identifier": { "if": [
                                         {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"},
-                                        {"cat": ["/", {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}]},
+                                        {
+                                            "cat": [
+                                                "/",
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.ClrSysMmbId.MmbId"}
+                                            ]
+                                        },
                                         null
                                     ]},
-                                    "name_and_address": {"filter": [
-                                        [
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.PstlAdr.StrtNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.PstlAdr.TwnNm"},
-                                            {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.PstlAdr.Ctry"}
-                                        ],
-                                        {"!=": [{"var": ""}, null]}
-                                    ]}
+                                    "name_and_address": {
+                                        "filter": [
+                                            [
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.Nm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.PstlAdr.StrtNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.PstlAdr.TwnNm"},
+                                                {"var": "data.ISO20022_MX.Document.PmtRtr.TxInf.RtrChain.Cdtr.Agt.FinInstnId.PstlAdr.Ctry"}
+                                            ],
+                                            {"!=": [{"var": ""}, null]}
+                                        ]
+                                    }
                                 },
                                 null
                             ]}

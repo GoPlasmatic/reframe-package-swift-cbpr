@@ -37,7 +37,7 @@
                         },
                         {
                             "path": "data.SwiftMT.fields.#58",
-                            "logic": {"or": [
+                            "logic": { "or": [
                                 {"exists": ["data", "SwiftMT", "fields", "58A"]},
                                 {"exists": ["data", "SwiftMT", "fields", "58D"]}
                             ]},
@@ -59,13 +59,7 @@
             "id": "publish_message",
             "name": "Publish MT202/205 RETN",
             "description": "Generate and publish the final MT message",
-            "function": {
-                "name": "publish_mt",
-                "input": {
-                    "source": "SwiftMT",
-                    "target": "result"
-                }
-            }
+            "function": {"name": "publish_mt", "input": {"source": "SwiftMT", "target": "result"}}
         }
     ]
 }

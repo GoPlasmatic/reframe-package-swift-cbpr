@@ -72,7 +72,7 @@
         },
         {
             "id": "cover",
-            "file": "outgoing/mt202cov_to_pacs009_cbpr_cover.json",
+            "file": "outgoing/mt202cov_to_pacs009_cbpr.json",
             "source": "MT202",
             "target": "pacs.009",
             "description": "Cover Payment"
@@ -100,7 +100,7 @@
         },
         {
             "id": "serial_cover",
-            "file": "outgoing/mt205cov_to_pacs009_cbpr_serial_cover.json",
+            "file": "outgoing/mt205cov_to_pacs009_cbpr.json",
             "source": "MT205",
             "target": "pacs.009",
             "description": "Serial Cover Payment"
@@ -200,14 +200,14 @@
         },
         {
             "id": "cover",
-            "file": "incoming/pacs009_to_mt202cov_cbpr_cover.json",
+            "file": "incoming/pacs009_to_mt202cov_cbpr.json",
             "source": "pacs.009",
             "target": "MT202COV",
             "description": "Cover Payment"
         },
         {
             "id": "advice",
-            "file": "incoming/pacs009_to_mt202adv_cbpr.json",
+            "file": "incoming/pacs009_to_mt202_cbpr_adv.json",
             "source": "pacs.009",
             "target": "MT202",
             "description": "Advice Variant"
@@ -221,7 +221,7 @@
         },
         {
             "id": "serial_cover",
-            "file": "incoming/pacs009_to_mt205cov_cbpr_serial_cover.json",
+            "file": "incoming/pacs009_to_mt205cov_cbpr.json",
             "source": "pacs.009",
             "target": "MT205COV",
             "description": "Serial Cover Payment"
@@ -372,6 +372,13 @@
             "source": "pain.001",
             "target": "MT101",
             "description": "Customer Credit Transfer Initiation"
+        },
+        {
+            "id": "simple_payment_initiation",
+            "file": "incoming/pain001_to_mt101_cbpr_simple.json",
+            "source": "pain.001",
+            "target": "MT101",
+            "description": "Simple Payment Initiation"
         }
     ]
 }

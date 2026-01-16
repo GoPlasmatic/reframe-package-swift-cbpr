@@ -5,10 +5,9 @@
     "priority": 10,
     "condition": { "and": [
         {"==": [{"var": "metadata.direction"}, "outgoing"]},
-
-            {"==": [{"var": "metadata.progress.status_code"}, 200]},
-            {"var": "data.header_xml"},
-            {"var": "data.document_xml"}
+        {"==": [{"var": "metadata.progress.status_code"}, 200]},
+        {"var": "data.header_xml"},
+        {"var": "data.document_xml"}
     ]},
     "tasks": [
         {

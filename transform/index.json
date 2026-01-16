@@ -42,6 +42,10 @@
             "description": "MT103 to pacs.008 document mapping for normal/STP messages"
         },
         {
+            "path": "outgoing/MT103/postcondition.json",
+            "description": "MT103 to pacs.008 postcondition validation for output compliance"
+        },
+        {
             "path": "outgoing/MT103REJT/bah-mapping.json",
             "description": "MT103 REJT Business Application Header mapping for rejection messages"
         },
@@ -86,6 +90,10 @@
             "description": "MT200 to pacs.009 document mapping for FI Transfer for Own Account"
         },
         {
+            "path": "outgoing/MT200/postcondition.json",
+            "description": "MT200 to pacs.009 postcondition validation for output compliance"
+        },
+        {
             "path": "outgoing/MT202/method-detection.json",
             "description": "MT202 unified method detection for all variants"
         },
@@ -106,6 +114,10 @@
             "description": "MT202 postcondition validation for pacs.009 output compliance"
         },
         {
+            "path": "outgoing/MT202REJT/method-detection.json",
+            "description": "MT202 REJT method detection for rejection messages"
+        },
+        {
             "path": "outgoing/MT202REJT/bah-mapping.json",
             "description": "MT202 REJT Business Application Header mapping for rejection messages"
         },
@@ -120,6 +132,10 @@
         {
             "path": "outgoing/MT202REJT/postcondition.json",
             "description": "MT202 REJT postcondition validation for pacs.002 output compliance"
+        },
+        {
+            "path": "outgoing/MT202RETN/method-detection.json",
+            "description": "MT202 RETN method detection for return messages"
         },
         {
             "path": "outgoing/MT202RETN/bah-mapping.json",
@@ -234,6 +250,10 @@
             "description": "MT900 to camt.054 document mapping for confirmation of debit messages"
         },
         {
+            "path": "outgoing/MT900/postcondition.json",
+            "description": "MT900 to camt.054 postcondition validation for output compliance"
+        },
+        {
             "path": "outgoing/MT910/bah-mapping.json",
             "description": "MT910 Business Application Header mapping for confirmation of credit messages"
         },
@@ -244,6 +264,10 @@
         {
             "path": "outgoing/MT910/document-mapping.json",
             "description": "MT910 to camt.054 document mapping for confirmation of credit messages"
+        },
+        {
+            "path": "outgoing/MT910/postcondition.json",
+            "description": "MT910 to camt.054 postcondition validation for output compliance"
         },
         {
             "path": "outgoing/MT192/bah-mapping.json",
@@ -276,6 +300,10 @@
         {
             "path": "outgoing/MT292/document-mapping.json",
             "description": "MT292 to camt.056 document mapping for cancellation request messages"
+        },
+        {
+            "path": "outgoing/MT292/postcondition.json",
+            "description": "MT292 postcondition validation for camt.056 output compliance"
         },
         {
             "path": "outgoing/MT196/bah-mapping.json",

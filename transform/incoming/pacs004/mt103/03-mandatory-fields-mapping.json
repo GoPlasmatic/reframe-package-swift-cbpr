@@ -22,13 +22,17 @@
                     "mappings": [
                         {
                             "path": "data.SwiftMT.fields.#20",
-                            "logic": { "reference": 
-                                { "if": [
+                            "logic": {
+                                "reference": { "if": [
                                     {">": [{"length": [{"var": "data.ISO20022_MX.Document.PmtRtr.GrpHdr.MsgId"}]}, 16]},
-                                    {"cat": [
-                                        {"substr": [{"var": "data.ISO20022_MX.Document.PmtRtr.GrpHdr.MsgId"}, 0, 15]},
-                                        "+"
-                                    ]},
+                                    {
+                                        "cat": [
+                                            {
+                                                "substr": [{"var": "data.ISO20022_MX.Document.PmtRtr.GrpHdr.MsgId"}, 0, 15]
+                                            },
+                                            "+"
+                                        ]
+                                    },
                                     {"var": "data.ISO20022_MX.Document.PmtRtr.GrpHdr.MsgId"}
                                 ]}
                             }
@@ -63,14 +67,7 @@
             "description": "Fixed value for RETN",
             "function": {
                 "name": "map",
-                "input": {
-                    "mappings": [
-                        {
-                            "path": "data.SwiftMT.fields.23B.instruction_code",
-                            "logic": "CRED"
-                        }
-                    ]
-                }
+                "input": {"mappings": [{"path": "data.SwiftMT.fields.23B.instruction_code", "logic": "CRED"}]}
             }
         }
     ]
